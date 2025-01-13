@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model CompanyMainPageDetails {
+  id                Int      @id @default(sequence())
+  heroSectionId     String   @unique @default(uuid())
+  userId            String?  @unique
+  address           String?
+  companyName       String?
+  companyLogo       String?
+  companyMoto       String?
+  companySlogan     String?
+  heroImage         String?
+  description       String?
+  email             String?
+  location          Float[]
+  phone             String?
+  terms             String?
+  privacyPolicyLink String?
+  year              String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Auth {
+  id             Int          @id @default(sequence())
+  userId         String       @unique @default(uuid())
+  userEmail      String?
+  userPhone      String?
+  userPassword   String
+  userName       String?
+  userIsVerify   Boolean      @default(false)
+  validEmail     Boolean      @default(false)
+  userIsApproved Boolean      @default(false)
+  userIsRejected Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+  role           Role?
+  userSetting    userSetting?
+  companyId      String?
+
+  @@map("auth")
+}
+
+enum Role {
+  Admin
+  User
+}
+
+model userSetting {
+  id           Int      @id @default(sequence())
+  userId       String   @unique
+  specificId   String?  @unique
+  language     String?  @default("en")
+  calanderType String?  @default("BS")
+  fontSize     String?  @default("small")
+  theme        String?  @default("light")
+  createdAt    DateTime @default(now())
+  initialSetup Boolean  @default(false)
+  companyId    String?
+  fiscalYear   String?
+  user         Auth     @relation(fields: [userId], references: [userId])
+
+  @@map("userSetting")
+}
+
+model CompanyUser {
+  id                   Int       @id @default(sequence())
+  companyId            String    @unique @default(uuid())
+  userId               String    @unique
+  companyName          String?
+  companyEmail         String?   @unique
+  companyPhone         String?
+  companyLocation      Float[]
+  companyCountry       String?
+  companyState         String?
+  companyDistrict      String?
+  companyMunicipality  String?
+  companyWard          String?
+  companyCity          String?
+  companyPan           String?
+  companyOwnerName     String?
+  companyLogo          String?
+  companyLandMark      String?
+  createdAt            DateTime  @default(now())
+  lastUpdatedTimeStamp DateTime?
+  fiscalYear           String?
+
+  @@map("ComapnyUser")
+}
+
+model FeatureCourses {
+  id             Int      @id @default(sequence())
+  courseId       String   @unique @default(uuid())
+  userId         String?
+  courseTitle    String?
+  instructor     String?
+  courseDuration String?
+  courseStudents String?
+  courseImage    String?
+  coursePrice    Float?
+  courseLevel    String?
+  reviews        String?
+  courseCategory String?
+  originalPrice  Float?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("FeatureCourses")
+}
