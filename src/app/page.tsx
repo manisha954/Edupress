@@ -5,7 +5,7 @@ import LoginPage from "@/components/LoginPage/LoginPage";
 import Error from "@/components/Pages/Error";
 import React from "react";
 import Contact from "@/components/Pages/Contact";
-import AllArticle from "@/components/Blog/AllArticle";
+
 import BlogPost from "@/components/Blog/BlogPost";
 import Login from "@/components/Login/Login";
 import RegistrationAdmin from "@/components/RegisterAdmin/Register";
@@ -19,6 +19,12 @@ import AddFeatureCourseForm from "@/components/Dash/WebsiteSetup/FeatureCourses/
 import FeaturedCourses from "@/components/LandingPagesUi/FeatureCourses";
 import CourseDetailsTable from "@/components/Dash/WebsiteSetup/FeatureCourses/CourseDetailsTable";
 import FeaturedCourse from "@/components/LandingPage/FeatureCourse";
+import AllCourses from "@/components/LandingPage/AllCourses";
+import LMSLandingPage from "@/components/LandingPagesUi/FeatureCourses";
+import ArticleForm from "@/components/Dash/WebsiteSetup/Blog/AddArticleDetails";
+import ArticleTable from "@/components/Dash/WebsiteSetup/Blog/ArticleDetailsTable";
+import Article from "@/components/LandingPage/Article";
+import AllArticle from "@/components/LandingPage/AllArticles";
 
 export default function page() {
   return (
@@ -26,8 +32,9 @@ export default function page() {
       {/* <Navbar/> */}
       {/* <HeroSection /> */}
       {/* <LoginPage /> */}
-      {/* <BlogPost /> */}
+
       {/* <CoursePage /> */}
+      {/* <LMSLandingPage/> */}
       {/* <FAQSection /> */}
       {/* <Error />  */}
       {/* <Contact /> */}
@@ -40,7 +47,12 @@ export default function page() {
       {/* <Hero /> */}
       {/* <AddFeatureCourseForm /> */}
       {/* <CourseDetailsTable /> */}
-      <FeaturedCourse />
+      {/* <FeaturedCourse /> */}
+      {/* <AllCourses /> */}
+      {/* <ArticleForm /> */}
+      {/* <ArticleTable /> */}
+      <Article />
+      {/* <AllArticle /> */}
     </div>
   );
 }

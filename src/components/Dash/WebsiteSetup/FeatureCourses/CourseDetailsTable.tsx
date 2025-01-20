@@ -120,9 +120,9 @@ export default function CourseDetailsTable() {
 
           <div className="block md:hidden rounded-lg">
             <div className="flex-1 overflow-auto h-[55vh] space-y-4 p-4">
-              {currentItems.map((courseDetails: any) => (
+              {currentItems.map((courseDetails: any, index: number) => (
                 <div
-                  key={courseDetails?.courseId}
+                  key={index}
                   className="border rounded-lg p-4 mb-4 shadow-md bg-white dark:bg-gray-800"
                 >
                   <div className="text-xs mb-2 text-black dark:text-white">
@@ -209,51 +209,52 @@ export default function CourseDetailsTable() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-500 dark:divide-gray-700">
-                        {filteredCourseDetails.map((courseDetails: any) => (
-                          <tr
-                            className=" hover:bg-gray-100"
-                            key={courseDetails?.userId}
-                          >
-                            <td className="whitespace-nowrap px-6 py-3 text-center text-xs font-medium">
-                              {courseDetails?.courseTitle}
-                            </td>
-                            <td className="whitespace-nowrap px-6 py-3 text-center text-xs font-medium">
-                              {courseDetails?.courseDuration}
-                            </td>
-                            <td className="whitespace-nowrap px-6 py-3 text-center text-xs font-medium">
-                              {courseDetails?.instructor}
-                            </td>
-                            <td className="whitespace-nowrap px-6 py-3 text-center text-xs font-medium">
-                              {courseDetails?.courseStudents}
-                            </td>
-                            <td className="whitespace-nowrap px-6 py-3 text-center text-xs font-medium">
-                              <div className="flex text-center space-x-2">
-                                <button
-                                  className="px-3 py-1 bg-violet-500 text-white rounded hover:bg-violet-600 transition"
-                                  onClick={() => handleEdit(courseDetails)}
-                                >
-                                  Edit
-                                </button>
-                                <ConfirmButton
-                                  classNames="text-xs px-2 py-1 border rounded-md bg-red-500 text-white"
-                                  buttonName="Delete"
-                                  buttonMessage={
-                                    "Are you sure you want to delete?"
-                                  }
-                                  buttonType="delete"
-                                  userId={courseDetails?.courseId}
-                                  handleConfirm={(value) => handleDelete(value)}
-                                />
-                                {/* <button
+                        {filteredCourseDetails.map(
+                          (courseDetails: any, index: number) => (
+                            <tr className=" hover:bg-gray-100" key={index}>
+                              <td className="whitespace-nowrap px-6 py-3 text-center text-xs font-medium">
+                                {courseDetails?.courseTitle}
+                              </td>
+                              <td className="whitespace-nowrap px-6 py-3 text-center text-xs font-medium">
+                                {courseDetails?.courseDuration}
+                              </td>
+                              <td className="whitespace-nowrap px-6 py-3 text-center text-xs font-medium">
+                                {courseDetails?.instructor}
+                              </td>
+                              <td className="whitespace-nowrap px-6 py-3 text-center text-xs font-medium">
+                                {courseDetails?.courseStudents}
+                              </td>
+                              <td className="whitespace-nowrap px-6 py-3 text-center text-xs font-medium">
+                                <div className="flex text-center space-x-2">
+                                  <button
+                                    className="px-3 py-1 bg-violet-500 text-white rounded hover:bg-violet-600 transition"
+                                    onClick={() => handleEdit(courseDetails)}
+                                  >
+                                    Edit
+                                  </button>
+                                  <ConfirmButton
+                                    classNames="text-xs px-2 py-1 border rounded-md bg-red-500 text-white"
+                                    buttonName="Delete"
+                                    buttonMessage={
+                                      "Are you sure you want to delete?"
+                                    }
+                                    buttonType="delete"
+                                    userId={courseDetails?.courseId}
+                                    handleConfirm={(value) =>
+                                      handleDelete(value)
+                                    }
+                                  />
+                                  {/* <button
                                   className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
                                   onClick={() => handleDelete( courseDetails?. courseDetailsId)}
                                 >
                                   Delete
                                 </button> */}
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
+                                </div>
+                              </td>
+                            </tr>
+                          )
+                        )}
                       </tbody>
                     </table>
                   </div>

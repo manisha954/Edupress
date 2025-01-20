@@ -42,7 +42,7 @@ export const addCourseDetails = async (courseDetailsData: FormData) => {
     } = JSON.parse(courseDetailsDataString as string);
 
     const file1 = courseDetailsData.get("courseImage") as File;
-    console.log("file 1 ", file1);
+    console.log("file 1", file1);
     let filePath1 = null;
     if (file1) {
       const uploadResult = await uploadFile(file1, "edupress/courseDetails");
@@ -57,11 +57,11 @@ export const addCourseDetails = async (courseDetailsData: FormData) => {
 
     let courseDetailsRecord;
     if (courseId) {
-      const existingcourseDetails = await prisma.featureCourses.findUnique({
+      const existingCourseDetails = await prisma.featureCourses.findUnique({
         where: { courseId: courseId },
       });
 
-      if (existingcourseDetails) {
+      if (existingCourseDetails) {
         // Update existing courseDetails record
         courseDetailsRecord = await prisma.featureCourses.update({
           where: { courseId: courseId },
@@ -74,7 +74,6 @@ export const addCourseDetails = async (courseDetailsData: FormData) => {
             userId: user.userId,
             courseLevel: courseLevel || "",
             reviews: reviews || "",
-
             coursePrice: parseFloat(coursePrice),
             originalPrice: parseFloat(originalPrice),
             ...(filePath1 && { courseImage: filePath1 }),
@@ -138,6 +137,27 @@ export const getcourseDetails = async () => {
   } catch (error) {
     console.error("Error fetching course details:", error);
     return { error: "Failed to fetch course details" };
+  }
+};
+export const getCourseSpecific = async (courseId: string) => {
+  try {
+    const existingCourse = await prisma.featureCourses.findUnique({
+      where: {
+        courseId: courseId,
+      },
+    });
+    if (existingCourse) {
+      return {
+        success: existingCourse,
+      };
+    }
+    return {
+      error: "Failed to fetch courses",
+    };
+  } catch (error) {
+    return {
+      error: "Sever error",
+    };
   }
 };
 

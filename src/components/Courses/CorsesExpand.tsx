@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Navbar from "../LandingPage.tsx/Navbar";
-import Footer from "../LandingPage.tsx/Footer";
+import Navbar from "../LandingPagesUi/Navbar";
+import Footer from "../LandingPagesUi/Footer";
 
 const CoursePage = () => {
   const [activeTab, setActiveTab] = useState("Overview");
@@ -328,25 +328,6 @@ const CoursePage = () => {
               </button>
             </div>
             <div className="mt-4">{renderTabContent()}</div>
-          </div>
-        </div>
-        <div className="md:w-1/3 p-4 p-24 rounded-lg shadow-lg fixed right-0 top-0 h-full">
-          {" "}
-          <div className="text-center">
-            {" "}
-            <h2 className="text-xl font-bold">Create an LMS website</h2>{" "}
-            <p>with LearnPress plugin</p>{" "}
-            <div className="flex justify-center mt-4">
-              {" "}
-              <img src="/images/s.png" alt="LearnPress" className="w-2/3" />
-            </div>
-            <div className="mt-4">
-              <span className="line-through text-gray-500">$59.0</span>
-              <span className="text-red-500 text-2xl font-bold">$49.0</span>
-            </div>
-            <button className="mt-4 bg-orange-500 text-white py-2 px-4 rounded">
-              Start Now
-            </button>
           </div>
         </div>
       </div>

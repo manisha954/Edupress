@@ -144,73 +144,97 @@ const AddFeatureCourseForm: React.FC<any> = ({
 
   return (
     <div>
-      <div className="max-w-2xl mx-auto p-4">
-        <h2 className="text-lg font-bold text-center">Add Featured Course</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            id="courseTitle"
-            placeholder="Course Title"
-            value={formData.courseTitle}
-            onChange={handleChange}
-            required
-          />
-          <input
-            id="instructor"
-            placeholder="Instructor Name"
-            value={formData.instructor}
-            onChange={handleChange}
-            required
-          />
-          <input
-            id="courseDuration"
-            placeholder="Course Duration"
-            value={formData.courseDuration}
-            onChange={handleChange}
-            required
-          />
-          <input
-            id="courseStudents"
-            placeholder="Number of Students"
-            value={formData.courseStudents}
-            onChange={handleChange}
-            required
-          />
-          <input
-            id="coursePrice"
-            placeholder="Course Price"
-            type="number"
-            value={formData.coursePrice}
-            onChange={handleChange}
-            required
-          />
-          <input
-            id="originalPrice"
-            placeholder="Original Price"
-            type="number"
-            value={formData.originalPrice}
-            onChange={handleChange}
-            required
-          />
+      <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+          Add Featured Course
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-4">
+            <input
+              id="courseTitle"
+              placeholder="Course Title"
+              value={formData.courseTitle}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
+            <input
+              id="instructor"
+              placeholder="Instructor Name"
+              value={formData.instructor}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input
+              id="courseDuration"
+              placeholder="Course Duration"
+              value={formData.courseDuration}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
+            <input
+              id="courseStudents"
+              placeholder="Number of Students"
+              value={formData.courseStudents}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input
+              id="coursePrice"
+              placeholder="Course Price"
+              type="number"
+              value={formData.coursePrice}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
+            <input
+              id="originalPrice"
+              placeholder="Original Price"
+              type="number"
+              value={formData.originalPrice}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            />
+          </div>
+
           <textarea
             id="reviews"
             placeholder="Reviews"
             value={formData.reviews}
             onChange={handleChange}
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
+
           <input
             id="courseCategory"
             placeholder="Course Category"
             value={formData.courseCategory}
             onChange={handleChange}
             required
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
+
           <PhotoInput
             values={courseImage}
             onFileSelected={handleFileChange}
             allowedExtensions={["jpg", "jpeg", "png"]}
           />
+
           <div className="space-y-2">
-            <label>Course Level</label>
+            <label className="block text-gray-600 font-medium">
+              Course Level
+            </label>
             <select
               onChange={(e) =>
                 setFormData((prev) => ({
@@ -219,6 +243,7 @@ const AddFeatureCourseForm: React.FC<any> = ({
                 }))
               }
               value={formData.courseLevel}
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
             >
               <option value="beginner">Beginner</option>
               <option value="intermediate">Intermediate</option>
@@ -229,13 +254,22 @@ const AddFeatureCourseForm: React.FC<any> = ({
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-blue-500 text-white py-2 px-4 rounded"
+            className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200 disabled:bg-gray-400"
           >
             {isLoading ? "Submitting..." : "Submit"}
           </button>
         </form>
-        {successMessage && <SuccessNotification message={successMessage} />}
-        {errorMessage && <FailedNotification message={errorMessage} />}
+
+        {successMessage && (
+          <div className="mt-6">
+            <SuccessNotification message={successMessage} />
+          </div>
+        )}
+        {errorMessage && (
+          <div className="mt-6">
+            <FailedNotification message={errorMessage} />
+          </div>
+        )}
       </div>
     </div>
   );

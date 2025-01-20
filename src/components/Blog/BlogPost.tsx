@@ -15,7 +15,7 @@ const BlogPost = () => {
         )}
       </div>
       <div className="carousel-container">
-        <Carousel showArrows={true} showThumbs={false} infiniteLoop={true}>
+        {/* <Carousel showArrows={true} showThumbs={false} infiniteLoop={true}>
           <div className="p-4 border rounded-lg">
             <p className="text-sm text-gray-500">Prev Articles</p>
             <p className="font-bold">
@@ -28,7 +28,7 @@ const BlogPost = () => {
               Another LearnPress WordPress Theme Collection For 2023
             </p>
           </div>
-        </Carousel>
+        </Carousel> */}
       </div>
     </div>
   );

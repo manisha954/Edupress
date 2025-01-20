@@ -113,9 +113,26 @@ model FeatureCourses {
   courseLevel    String?
   reviews        String?
   courseCategory String?
+  overview       String?
   originalPrice  Float?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
   @@map("FeatureCourses")
+}
+
+model Blog {
+  id                 Int      @id @default(sequence())
+  articleId          String   @unique @default(uuid())
+  userId             String?
+  articleTitle       String?
+  articleImage       String?
+  articleDescription String?
+  date               String?
+  articleCategory    String?
+  articleTags        String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("Blog")
 }

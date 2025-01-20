@@ -1,6 +1,6 @@
 "use client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addCourseDetails, deletecourseDetails } from "./CourseDetailsAction";
+import { addCourseDetails, deleteCourseDetails } from "./CourseDetailsAction";
 
 export default function useCourseDetailsMutations() {
   const queryClient = useQueryClient();
@@ -8,13 +8,13 @@ export default function useCourseDetailsMutations() {
   const { mutateAsync: courseDetail } = useMutation({
     mutationFn: addCourseDetails,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [" heroSection"] });
+      queryClient.invalidateQueries({ queryKey: [" courseDetails"] });
     },
   });
   const { mutateAsync: deleteCourseDetail } = useMutation({
-    mutationFn: deletecourseDetails,
+    mutationFn: deleteCourseDetails,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [" heroSection"] });
+      queryClient.invalidateQueries({ queryKey: [" courseDetails"] });
     },
   });
 

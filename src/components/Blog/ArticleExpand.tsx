@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { useSearchParams } from "next/navigation";
-import Navbar from "../LandingPage.tsx/Navbar";
-import Footer from "../LandingPage.tsx/Footer";
+import Navbar from "../LandingPagesUi/Navbar";
+import Footer from "../LandingPagesUi/Footer";
 
 const BlogPost = () => {
   const searchParams = useSearchParams();
